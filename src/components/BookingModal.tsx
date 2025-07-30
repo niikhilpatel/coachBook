@@ -111,9 +111,6 @@ const BookingModal: React.FC<BookingModalProps> = ({
                 ...(callType === "follow-up" && endDate ? { endDate } : {})
             };
 
-
-
-
             const docRef = await addDoc(collection(db, "bookings"), newBooking);
             onBookingSuccess({ ...newBooking, id: docRef.id });
             onClose();
@@ -128,6 +125,13 @@ const BookingModal: React.FC<BookingModalProps> = ({
     const handleAddClient = async () => {
         if (!newClientName || !newClientPhone) {
             alert("Both name and phone are required.");
+            return;
+        }
+
+        // ✅ Validate 10-digit numeric phone number
+        const phonePattern = /^\d{10}$/;
+        if (!phonePattern.test(newClientPhone)) {
+            alert("Please enter a valid 10-digit phone number (digits only).");
             return;
         }
 
@@ -254,12 +258,15 @@ const BookingModal: React.FC<BookingModalProps> = ({
                                             className="w-full border px-3 py-2 rounded"
                                         />
                                         <input
-                                            type="text"
-                                            placeholder="Client Phone"
+                                            type="tel"
                                             value={newClientPhone}
                                             onChange={(e) => setNewClientPhone(e.target.value)}
-                                            className="w-full border px-3 py-2 rounded"
+                                            maxLength={10}
+                                            pattern="\d{10}"
+                                            placeholder="Enter 10-digit phone number"
+                                            className="border px-3 py-2 rounded w-full"
                                         />
+
                                         <button
                                             onClick={handleAddClient}
                                             className="bg-green-500 text-white px-4 py-1 rounded hover:bg-green-600"
@@ -299,7 +306,7 @@ const BookingModal: React.FC<BookingModalProps> = ({
                                     className="w-full outline-2 outline-blue-500 px-3 py-2 rounded bg-gray-100 text-gray-600 cursor-not-allowed"
                                 />
                             </div>
-                            
+
                             {/* Follow-up End Date */}
                             {callType === "follow-up" && (
                                 <div>
