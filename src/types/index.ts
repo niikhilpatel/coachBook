@@ -15,14 +15,15 @@ export interface Client {
 }
 
 export interface Booking {
-    id?: string;
-    clientId?: string;
-    clientName: string;
-    clientPhone: string;
-    callType: CallType;
-    time: string;
-    date: string;
-    recurring?: boolean;
+  id?: string;
+  clientId?: string;
+  clientName: string;
+  clientPhone: string;
+  callType: CallType;
+  time: string;
+  date: string;
+  recurring?: boolean;
+  endDate?: string;
 }
 
 

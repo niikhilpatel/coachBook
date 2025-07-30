@@ -19,32 +19,35 @@ const Calendar: React.FC<CalendarProps> = ({
 
 
   const getBookingForSlot = (time: string): Booking | undefined => {
-    const slotTime = new Date(`${date}T${time}`);
+    const slotDate = new Date(`${date}T${time}`); // date = selected day
+    const selectedDay = slotDate.getDay();
 
     return bookings.find((booking) => {
-      const bookingTime = new Date(`${booking.date}T${booking.time}`);
-      const selectedDay = new Date(date).getDay();
       const bookingDay = new Date(booking.date).getDay();
+      const bookingTimeOnly = booking.time;
+      const slotTimeOnly = time;
 
       if (booking.callType === "follow-up") {
         if (booking.recurring) {
-          return selectedDay === bookingDay && bookingTime.getTime() === slotTime.getTime();
+          // Optional: add endDate check
+          if (booking.endDate && new Date(date) > new Date(booking.endDate)) return false;
+
+          return bookingDay === selectedDay && bookingTimeOnly === slotTimeOnly;
         }
-        return booking.date === date && booking.time === time;
+
+        return booking.date === date && bookingTimeOnly === slotTimeOnly;
       }
 
       if (booking.callType === "onboarding") {
-        const diff = (slotTime.getTime() - bookingTime.getTime()) / (1000 * 60);
-        if (booking.recurring) {
-          return selectedDay === bookingDay && (diff === 0 || diff === 20);
-        }
-        return booking.date === date && (booking.time === time || diff === 20);
+        const bookingDateTime = new Date(`${booking.date}T${booking.time}`);
+        const diff = (slotDate.getTime() - bookingDateTime.getTime()) / (1000 * 60); // in minutes
+
+        return booking.date === date && (diff === 0 || diff === 20);
       }
 
       return false;
     });
   };
-
 
 
   return (

@@ -27,6 +27,7 @@ const BookingModal: React.FC<BookingModalProps> = ({
     const [newClientPhone, setNewClientPhone] = useState("");
     const [clientsLoading, setClientsLoading] = useState(true);
     const [confirmDeleteClient, setConfirmDeleteClient] = useState<{ name: string; phone: string } | null>(null);
+    const [endDate, setEndDate] = useState<string>("");
 
     // Inside component:
     useEffect(() => {
@@ -107,7 +108,11 @@ const BookingModal: React.FC<BookingModalProps> = ({
                 date,
                 time,
                 recurring: callType === "follow-up",
+                ...(callType === "follow-up" && endDate ? { endDate } : {})
             };
+
+
+
 
             const docRef = await addDoc(collection(db, "bookings"), newBooking);
             onBookingSuccess({ ...newBooking, id: docRef.id });
@@ -283,6 +288,20 @@ const BookingModal: React.FC<BookingModalProps> = ({
                                     </option>
                                 </select>
                             </div>
+                            
+                            {/* Follow-up End Date */}
+                            {callType === "follow-up" && (
+                                <div>
+                                    <label className="block text-sm font-medium mb-1">Follow-up End Date</label>
+                                    <input
+                                        type="date"
+                                        value={endDate}
+                                        onChange={(e) => setEndDate(e.target.value)}
+                                        min={date}
+                                        className="w-full outline-2 outline-blue-500 px-3 py-2 rounded"
+                                    />
+                                </div>
+                            )}
 
                             {/* Date Display */}
                             <div>
@@ -309,8 +328,8 @@ const BookingModal: React.FC<BookingModalProps> = ({
                                 <button
                                     onClick={handleSubmit}
                                     className={`px-4 py-2 w-full ml-2 rounded text-white ${loading || clientsLoading
-                                            ? "bg-blue-300 cursor-not-allowed"
-                                            : "bg-blue-600 hover:bg-blue-700"
+                                        ? "bg-blue-300 cursor-not-allowed"
+                                        : "bg-blue-600 hover:bg-blue-700"
                                         }`}
                                     disabled={loading || clientsLoading}
                                 >
@@ -334,9 +353,12 @@ const BookingModal: React.FC<BookingModalProps> = ({
                                     ? `${client} (${clients.find((c) => c.name === client)?.phone ?? "Phone not found"})`
                                     : "(Not selected)"}
                             </p>
-                            <p className="text-gray-700 mt-2">
-                                <strong>Call Type:</strong> {callType}
-                            </p>
+                            {callType === "follow-up" && endDate && (
+                                <p className="text-gray-700 mt-2">
+                                    <strong>Follow-up Ends On:</strong> {endDate}
+                                </p>
+                            )}
+
 
                             <hr className="my-4 border-purple-300" />
                             <div className="text-sm text-gray-500">
@@ -346,6 +368,8 @@ const BookingModal: React.FC<BookingModalProps> = ({
                     </div>
                 </div>
             </div>
+
+
 
             {/* Confirm Delete Modal */}
             {confirmDeleteClient && (
