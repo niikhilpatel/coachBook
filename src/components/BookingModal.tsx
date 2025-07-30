@@ -292,7 +292,7 @@ const BookingModal: React.FC<BookingModalProps> = ({
                             {/* Follow-up End Date */}
                             {callType === "follow-up" && (
                                 <div>
-                                    <label className="block text-sm font-medium mb-1">Follow-up End Date</label>
+                                    <label className="block text-sm font-medium mb-1">Follow-up End Date (Recurring)</label>
                                     <input
                                         type="date"
                                         value={endDate}

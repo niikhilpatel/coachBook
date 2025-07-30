@@ -29,12 +29,9 @@ const Calendar: React.FC<CalendarProps> = ({
 
       if (booking.callType === "follow-up") {
         if (booking.recurring) {
-          // Optional: add endDate check
           if (booking.endDate && new Date(date) > new Date(booking.endDate)) return false;
-
           return bookingDay === selectedDay && bookingTimeOnly === slotTimeOnly;
         }
-
         return booking.date === date && bookingTimeOnly === slotTimeOnly;
       }
 
