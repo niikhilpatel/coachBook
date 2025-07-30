@@ -10,7 +10,10 @@ import { FcBarChart } from "react-icons/fc";
 import { IoIosPersonAdd } from "react-icons/io";
 
 const Home = () => {
-    const [selectedDate, setSelectedDate] = useState<string>("2025-07-29");
+    const [selectedDate, setSelectedDate] = useState<string>(() => {
+        const today = new Date();
+        return today.toISOString().split("T")[0]; // format: YYYY-MM-DD
+    });
     const [bookings, setBookings] = useState<Booking[]>([]);
     const [selectedTime, setSelectedTime] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
