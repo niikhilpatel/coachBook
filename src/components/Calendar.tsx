@@ -19,20 +19,32 @@ const Calendar: React.FC<CalendarProps> = ({
 
 
   const getBookingForSlot = (time: string): Booking | undefined => {
-    return bookings.find((booking) => {
-      if (booking.time !== time) return false;
+    const slotTime = new Date(`${date}T${time}`);
 
-      if (booking.recurring) {
-        // Recurring booking: match day of week
-        const selectedDay = new Date(date).getDay(); // 0-6
-        const bookingDay = new Date(booking.date).getDay();
-        return selectedDay === bookingDay;
+    return bookings.find((booking) => {
+      const bookingTime = new Date(`${booking.date}T${booking.time}`);
+      const selectedDay = new Date(date).getDay();
+      const bookingDay = new Date(booking.date).getDay();
+
+      if (booking.callType === "follow-up") {
+        if (booking.recurring) {
+          return selectedDay === bookingDay && bookingTime.getTime() === slotTime.getTime();
+        }
+        return booking.date === date && booking.time === time;
       }
 
-      // One-time booking
-      return booking.date === date;
+      if (booking.callType === "onboarding") {
+        const diff = (slotTime.getTime() - bookingTime.getTime()) / (1000 * 60);
+        if (booking.recurring) {
+          return selectedDay === bookingDay && (diff === 0 || diff === 20);
+        }
+        return booking.date === date && (booking.time === time || diff === 20);
+      }
+
+      return false;
     });
   };
+
 
 
   return (

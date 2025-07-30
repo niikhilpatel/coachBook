@@ -79,17 +79,23 @@ const BookingModal: React.FC<BookingModalProps> = ({
             const bookingsRef = collection(db, "bookings");
             const q = query(
                 bookingsRef,
-                where("clientName", "==", clientObj!.name),
+                where("clientPhone", "==", clientObj.phone),
                 where("date", "==", date)
             );
 
             const snapshot = await getDocs(q);
 
-            if (!snapshot.empty) {
-                setError("This client already has a booking for this date.");
+            const conflict = snapshot.docs.find((doc) => {
+                const data = doc.data() as Booking;
+                return data.time === time && data.callType === callType;
+            });
+
+            if (conflict) {
+                setError("This client already has a booking at this time on this date or upcoming dates.");
                 setLoading(false);
                 return;
             }
+
 
             const newBooking: Booking = {
                 clientName: clientObj!.name,
