@@ -8,7 +8,7 @@ import { fetchClients, addClient } from "../data/clients";
 import { query, where, getDocs } from "firebase/firestore";
 import { RiseLoader } from "react-spinners";
 import { deleteDoc, doc } from "firebase/firestore";
-
+import { toast } from 'react-toastify';
 
 const BookingModal: React.FC<BookingModalProps> = ({
     date,
@@ -124,14 +124,14 @@ const BookingModal: React.FC<BookingModalProps> = ({
 
     const handleAddClient = async () => {
         if (!newClientName || !newClientPhone) {
-            alert("Both name and phone are required.");
+            toast.warning("Name is required.");
             return;
         }
 
         // ✅ Validate 10-digit numeric phone number
         const phonePattern = /^\d{10}$/;
         if (!phonePattern.test(newClientPhone)) {
-            alert("Please enter a valid 10-digit phone number (digits only).");
+            toast.warning("Please enter a valid 10-digit phone number (digits only).");
             return;
         }
 
@@ -146,7 +146,7 @@ const BookingModal: React.FC<BookingModalProps> = ({
             setNewClientPhone("");
             setShowAddClient(false);
         } catch (error) {
-            alert("Failed to add client.");
+            toast.error("Failed to add client.");
             console.error(error);
         }
     };
