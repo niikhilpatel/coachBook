@@ -88,15 +88,6 @@ VITE_MESSAGING_SENDER_ID=your_id
 VITE_APP_ID=your_app_id
 ```
 
-for using mine Firebase config paste below code
-```env
-VITE_API_KEY=AIzaSyBRGbGmQHZpCwIDp3aWQynyohN9UFnYlF0
-VITE_AUTH_DOMAIN=healthtick-1a710.firebaseapp.com
-VITE_PROJECT_ID=healthtick-1a710
-VITE_STORAGE_BUCKET=healthtick-1a710.firebasestorage.app
-VITE_MESSAGING_SENDER_ID=152827652655
-VITE_APP_ID=1:152827652655:web:032e9d1fe96b60cbb8b4da
-```
 ---
 
 ### 🧠 Assumptions Made
