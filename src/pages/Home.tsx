@@ -69,9 +69,9 @@ const Home = () => {
 
                 <div className="md:mt-6">
                     <h3 className="text-lg font-semibold md:mb-2 flex items-center gap-2"><FcBarChart size={28} /> Summary</h3>
-                    <p className="text-gray-700">Total Bookings: <strong>{bookings.length}</strong></p>
-                    <p className="text-gray-700">Onboarding: <strong>{onboardingCount}</strong></p>
-                    <p className="text-gray-700">Follow-ups: <strong>{followUpCount}</strong></p>
+                    <p className="font-bold text-lg text-gray-700">Total Bookings: <strong>{bookings.length}</strong></p>
+                    <p className="text-md text-gray-700">Onboarding: <strong>{onboardingCount}</strong></p>
+                    <p className="text-md text-gray-700">Follow-ups: <strong>{followUpCount}</strong></p>
 
                     {/* Booked Clients */}
                     {bookings.length > 0 && (
