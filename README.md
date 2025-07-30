@@ -103,6 +103,6 @@ VITE_APP_ID=your_app_id
 ---
 
 🙋‍♂️ Author
-Made by Your <br>
+Made by <br>
 Name : Nikhil Patel<br>
 Mail Id : nikhildevcode@gmail.com<br>

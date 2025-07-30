@@ -128,7 +128,6 @@ const BookingModal: React.FC<BookingModalProps> = ({
             return;
         }
 
-        // ✅ Validate 10-digit numeric phone number
         const phonePattern = /^\d{10}$/;
         if (!phonePattern.test(newClientPhone)) {
             toast.warning("Please enter a valid 10-digit phone number (digits only).");
