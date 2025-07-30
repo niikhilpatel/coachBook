@@ -291,7 +291,7 @@ const BookingModal: React.FC<BookingModalProps> = ({
 
                             {/* Date Display */}
                             <div>
-                                <label className="block text-sm font-medium mb-1">Date (Onboarding/Follow-up)</label>
+                                <label className="block text-sm font-medium mb-1">Onboarding/Follow-up Date</label>
                                 <input
                                     type="date"
                                     value={date}
