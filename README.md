@@ -5,7 +5,7 @@ A custom calendar app to schedule onboarding and recurring follow-up calls for c
 ---
 
 🔗 Deployment (Live App Link)<br>
-Deployed on Vercel : 
+Deployed on Netlify : https://healthtick-calender.netlify.app/ 
 
 ---
 ## 🔧 Tech Stack
