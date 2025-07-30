@@ -4,8 +4,7 @@ A custom calendar app to schedule onboarding and recurring follow-up calls for c
 
 ---
 
-🔗 Deployment (Live App Link)
-Deployed on Netlify : 
+🔗 Deployment (Live App Link)<br>
 Deployed on Vercel : 
 
 ---
@@ -33,12 +32,12 @@ Deployed on Vercel :
 ## 📂 Folder Structure
 
 src/
-├── components/ # Calendar, BookingModal, etc.
-├── firebase/ # Firebase config and queries
-├── pages/ # Main Home page
-├── types/ # TypeScript types
-├── utils/ # Time + overlap logic
-|__ data/ # clients.ts
+├── components/ # Calendar, BookingModal, etc.<br>
+├── firebase/ # Firebase config and queries<br>
+├── pages/ # Main Home page<br>
+├── types/ # TypeScript types<br>
+├── utils/ # Time + overlap logic<br>
+|__ data/ # clients.ts<br>
 
 
 
@@ -63,7 +62,7 @@ src/
 ## 📝 How to Run
 
 ```bash
-git clone https://github.com/your-username/healthtick-calendar.git
+git clone https://github.com/niikhilpatel/healthtick-calender.git
 ```
 ```bash
 cd healthtick-calendar
@@ -113,6 +112,6 @@ VITE_APP_ID=1:152827652655:web:032e9d1fe96b60cbb8b4da
 ---
 
 🙋‍♂️ Author
-Made by Your 
-Name : Nikhil Patel
-Mail Id : nikhildevcode@gmail.com
+Made by Your <br>
+Name : Nikhil Patel<br>
+Mail Id : nikhildevcode@gmail.com<br>
