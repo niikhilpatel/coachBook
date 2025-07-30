@@ -89,8 +89,8 @@ const Home = () => {
 
             {/* Right Panel */}
             <div className="md:w-2/3 p-4 md:p-6 md:m-4 rounded-lg flex flex-col shadow-teal-100 shadow-2xl bg-white">
-                <div className="flex justify-between items-center mb-4">
-                    <h2 className="md:text-xl text-md font-semibold">Schedule for {selectedDate}</h2>
+                <div className="flex flex-col md:flex-row justify-between items-center mb-4">
+                    <h2 className="md:text-xl text-md font-semibold mb-2 md:mb-0">Schedule for {selectedDate}</h2>
                     <div className="space-x-2">
                         <button
                             onClick={goToPreviousDay}
