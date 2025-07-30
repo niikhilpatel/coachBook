@@ -288,6 +288,17 @@ const BookingModal: React.FC<BookingModalProps> = ({
                                     </option>
                                 </select>
                             </div>
+
+                            {/* Date Display */}
+                            <div>
+                                <label className="block text-sm font-medium mb-1">Date(can't edit here)</label>
+                                <input
+                                    type="date"
+                                    value={date}
+                                    disabled
+                                    className="w-full outline-2 outline-blue-500 px-3 py-2 rounded bg-gray-100 text-gray-600 cursor-not-allowed"
+                                />
+                            </div>
                             
                             {/* Follow-up End Date */}
                             {callType === "follow-up" && (
@@ -304,15 +315,6 @@ const BookingModal: React.FC<BookingModalProps> = ({
                             )}
 
                             {/* Date Display */}
-                            <div>
-                                <label className="block text-sm font-medium mb-1">Date</label>
-                                <input
-                                    type="date"
-                                    value={date}
-                                    disabled
-                                    className="w-full outline-2 outline-blue-500 px-3 py-2 rounded bg-gray-100 text-gray-600 cursor-not-allowed"
-                                />
-                            </div>
 
                             {error && <div className="text-red-500 text-sm">{error}</div>}
 
