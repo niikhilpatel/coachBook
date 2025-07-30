@@ -31,12 +31,12 @@ Deployed on Vercel :
 
 ## 📂 Folder Structure
 
-src/
-├── components/ # Calendar, BookingModal, etc.<br>
-├── firebase/ # Firebase config and queries<br>
-├── pages/ # Main Home page<br>
-├── types/ # TypeScript types<br>
-├── utils/ # Time + overlap logic<br>
+src/ <br>
+|__ components/ # Calendar, BookingModal, etc.<br>
+|__ firebase/ # Firebase config and queries<br>
+|__ pages/ # Main Home page<br>
+|__ types/ # TypeScript types<br>
+|__ utils/ # Time + overlap logic<br>
 |__ data/ # clients.ts<br>
 
 
