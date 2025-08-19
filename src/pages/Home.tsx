@@ -51,12 +51,12 @@ const Home = () => {
     const followUpCount = bookings.filter((b) => b.callType === "follow-up").length;
 
     return (
-        <div className="md:h-182 md:flex overflow-hidden shadow-2xl shadow-grey-800 rounded-lg">
+        <div className="md:h-screen md:flex overflow-hidden shadow-2xl shadow-grey-800 rounded-lg">
             {/* Left Sidebar (30%) */}
             <div className="md:w-1/3 p-4 md:p-6 md:ml-4 md:my-4  rounded-lg shadow-orange-100 shadow-2xl bg-white space-y-6">
                 <div className="flex items-center gap-3 mb-10">
                     <img src={Logo} alt="Health-Tick Logo" className="h-10 md:h-15 bg-black rounded-full  " />
-                    <h2 className="text-lg md:text-3xl font-bold gradient-text ">  HealthTick Calendar</h2>
+                    <h2 className="text-lg md:text-3xl font-bold gradient-text ">CoachBook</h2>
                 </div>
                 <h2 className="text-xl font-semibold text-gray-700 flex items-center gap-2 "><FcCalendar size={28} /> Select Date</h2>
 
