@@ -1,11 +1,11 @@
-# HealthTick Calendar App 🗓️
+# CoachBook App 🗓️
 
 A custom calendar app to schedule onboarding and recurring follow-up calls for coaches. Built with React, TypeScript, Tailwind CSS, and Firebase Firestore.
 
 ---
 
 🔗 Deployment (Live App Link)<br>
-Deployed on Netlify : https://healthtick-calender.netlify.app/ 
+Deployed on Netlify : https://coachbook.netlify.app/
 
 ---
 ## 🔧 Tech Stack
@@ -62,10 +62,10 @@ src/ <br>
 ## 📝 How to Run
 
 ```bash
-git clone https://github.com/niikhilpatel/healthtick-calender.git
+git clone https://github.com/niikhilpatel/coachBook.git
 ```
 ```bash
-cd healthtick-calendar
+cd coachBook
 ```
 ```bash
 npm install
